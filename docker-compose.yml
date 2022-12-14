@@ -1,0 +1,23 @@
+version: "3"
+services:
+  server:
+    container_name: project-server
+    image: final-project-server:server
+    ports:
+      - "8080:8080"
+    links:
+      - mongo
+  app:
+    container_name: project-app
+    image: final-project-app:app
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+volumes:
+  final-project-complete:
